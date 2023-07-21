@@ -4,44 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="src/css/normalize.css" />
+    <link rel="stylesheet" href="src/css/global.css" />
+    <link rel="stylesheet" href="src/css/main-info.css" />
+    <link rel="stylesheet" href="src/css/additional-info.css" />
   </head>
   <body>
-    <main id="content">
-      <div id="main-info">
+    <main class="content">
+      <div class="main-info">
         <div class="button-block">
           <button id="open-sidebar">Поиск города</button>
         </div>
-        <div class="main-block">
-          <img class="center-img" src="src/image16.png" alt="Center Image" />
-          <div class="temperature"><span class="gradus">1</span> °C</div>
-          <div class="weather">Снег</div>
-          <div class="feelslike">Ощущается как -3 °C</div>
+        <img class="center-img" src="src/img/snowflake.svg" alt="Снежинка" />
+        <div class="big-info">
+          <p class="temperature"><span class="degree">1</span> °C</p>
+          <p class="weather">Снег</p>
+          <p class="feelslike">Ощущается как -3 °C</p>
         </div>
         <div class="small-info">
           <div class="date">
-            <div class="small-date">Сегодня</div>
-            <div class="small-date">Вс, 13 мар</div>
+            <p class="small-date">Сегодня</p>
+            <p class="small-date">Вс, 13 мар</p>
           </div>
-          <div class="location"><span class="city">Москва</span></div>
+          <p class="location"><span class="city">Москва</span></p>
         </div>
-        <div id="sidebar-search">
+        <div class="sidebar">
           <div class="button-close">
-            <img id="close-sidebar" src="src/side-bar-search-Vector.png" alt="Close Sidebar" />
+            <button id="close-sidebar">
+              <img src="src/img/cross.png" alt="Закрыть" />
+            </button>
           </div>
           <div class="form-search">
-            <form id="search-form">
-              <label for="search-input">Найти город</label>
-              <input type="text" id="search-input" placeholder="Москва" />
+            <form id="search-city">
+              <label for="search-city-input">Найти город</label>
+              <input type="text" id="search-city-input" placeholder="Введите город" />
             </form>
-            <button id="find">Найти</button>
+            <button class="find-city">Найти</button>
           </div>
         </div>
       </div>
-      <div id="additional-info">
-        <div id="placeholder"></div>
+      <div class="additional-info">
+        <div class="placeholder"></div>
       </div>
     </main>
-    <script src="index.js"></script>
+    <script src="/src/index.js"></script>
   </body>
 </html>
