@@ -7,7 +7,7 @@
   width: 460px;
   padding: 42px 41px 35px;
   background-color: #fff;
-  background-image: url(/src/img/cloud-background.png);
+  background-image: url(../img/cloud-background.png);
   background-blend-mode: difference;
   background-repeat: no-repeat;
   background-position: center top 110px;
@@ -81,6 +81,8 @@
 .small-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding-left: 5px;
   font-size: 18px;
@@ -121,10 +123,10 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  left: 107px;
+  right: 76px;
   top: 45%;
   transform: translateY(-50%);
-  background-image: url(/src/img/location-mark.svg);
+  background-image: url(../img/location-mark.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -194,7 +196,7 @@
   height: 17px;
   left: 19px;
   top: 34%;
-  background-image: url(/src/img/lens.svg);
+  background-image: url(../img/lens.svg);
   background-repeat: no-repeat;
 }
 
@@ -228,8 +230,122 @@ label[for='search-city-input'] {
 
 /* Media for adaptive */
 
-@media (max-width: 834px) {
+/* i-pad */
+
+@media (min-width: 834px) and (max-width: 1439px) {
+  /* Main-info */
+  .main-info {
+    min-width: 329px;
+    width: 329px;
+    padding: 53px 20px 35px 21px;
+    background-position: center top 308px;
+    background-size: 107%;
+  }
+
+  .button-block {
+    padding: 0px 7px;
+    margin-bottom: 10px;
+  }
+
+  .big-info {
+    margin-bottom: 74px;
+  }
+
+  .small-info {
+    margin-bottom: 7px;
+  }
+
+  .date {
+    justify-content: space-between;
+    margin-left: 6px;
+  }
+
+  .small-date {
+    margin: 0;
+  }
+
+  .small-date:first-child {
+    margin-left: 5px;
+  }
+
+  .location {
+    padding-left: 13px;
+  }
+
+  .city::before {
+    right: 77px;
+    top: 50%;
+  }
+
+  /* Sidebar */
+
+  .sidebar {
+    padding: 59px 27px;
+  }
+
+  .form-search {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-close {
+    margin-bottom: 30px;
+  }
+
+  #search-city-input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .form-search::before {
+    top: 15%;
+  }
 }
 
-@media (max-width: 375px) {
+/* i-phone */
+
+@media (max-width: 833px) {
+  .main-info {
+    height: 667px;
+    width: 100%;
+    padding: 31px 30px 44px;
+    background-image: url(../img/cloud-background-phone.png);
+    background-position: center top 67px;
+    background-size: 100%;
+  }
+
+  .button-block {
+    margin-bottom: 9px;
+  }
+
+  .center-img {
+    margin-bottom: -37px;
+  }
+
+  .small-info {
+    margin-bottom: 7px;
+  }
+
+  .date {
+    justify-content: space-between;
+    margin-left: 19px;
+    width: 285px;
+  }
+
+  .small-date {
+    margin: 0;
+  }
+
+  .small-date:first-child {
+    margin-left: 5px;
+  }
+
+  .location {
+    padding-left: 10px;
+  }
+
+  .city::before {
+    right: 76px;
+    top: 45%;
+  }
 }

@@ -11,7 +11,7 @@
   </head>
   <body>
     <main class="content">
-      <div class="main-info">
+      <section class="main-info">
         <div class="button-block">
           <button id="open-sidebar">Поиск города</button>
         </div>
@@ -42,106 +42,184 @@
             <button class="find-city">Найти</button>
           </div>
         </div>
-      </div>
-      <div class="additional-info">
+      </section>
+      <section class="additional-info">
         <div class="forecast-panel">
-          <div class="title">
-            <p class="title-forecast">Прогноз</p>
-            <button class="title-week bolder">на неделю</button>
-            <button class="title-hour">почасовой</button>
+          <div class="forecast-switcher">
+            <div class="title">
+              <h2 class="title-forecast">Прогноз</h2>
+              <div class="switcher">
+                <button class="title-week bolder">на неделю</button>
+                <button class="title-hour">почасовой</button>
+              </div>
+            </div>
+
+            <div class="cards-container">
+              <button class="arrow-button arrow-left"></button>
+              <div class="forecast-week choosen">
+                <div class="card fog">
+                  <div class="card-title">Завтра</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card rain">
+                  <div class="card-title">Пн, 15 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card rain">
+                  <div class="card-title">Вт, 16 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">Ср, 17 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">Чт, 18 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">Пт, 19 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">Сб, 20 мар</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                    <p class="min">4°C</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="forecast-hour">
+                <div class="card fog">
+                  <div class="card-title">15:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">16:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">17:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">18:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">19:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">20:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">21:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">22:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card storm">
+                  <div class="card-title">23:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">00:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">01:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+                <div class="card fog">
+                  <div class="card-title">02:00</div>
+                  <div class="card-info">
+                    <p class="max">10°C</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="arrow-button arrow-right"></button>
+            </div>
           </div>
 
-          <div class="cards-container">
-            <button class="arrow-button arrow-left"></button>
-            <div class="forecast-week choosen">
-              <div class="card fog">
-                <div class="card-title">Завтра</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
+          <div class="details-for-today">
+            <div class="details-for-today-title"><h2>Подробно на сегодня</h2></div>
+            <div class="details-container">
+              <div class="detail detail-wind">
+                <h5 class="detail-title">Скорость ветра</h5>
+                <p class="detail-info">
+                  <span class="value">7 </span><span class="unit">м/с</span>
+                </p>
+                <div class="wind-direction">
+                  <div class="direction-img"></div>
+                  <p class="direction">СЗ</p>
                 </div>
               </div>
-              <div class="card rain">
-                <div class="card-title">Пн, 15 мар</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
-                </div>
+              <div class="detail detail-humidity">
+                <h5 class="detail-title">Влажность</h5>
+                <p class="detail-info"><span class="value">84 </span><span class="unit">%</span></p>
               </div>
-              <div class="card rain">
-                <div class="card-title">Вт, 16 мар</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
-                </div>
+              <div class="detail detail-visibility">
+                <h5 class="detail-title">Видимость</h5>
+                <p class="detail-info">
+                  <span class="value">6.2 </span><span class="unit">км</span>
+                </p>
               </div>
-              <div class="card storm">
-                <div class="card-title">Ср, 17 мар</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
-                </div>
-              </div>
-              <div class="card storm">
-                <div class="card-title">Чт, 18 мар</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
-                </div>
-              </div>
-              <div class="card storm">
-                <div class="card-title">Пт, 19 мар</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                  <p class="min">4°C</p>
-                </div>
+              <div class="detail detail-pressure">
+                <h5 class="detail-title">Давление</h5>
+                <p class="detail-info">
+                  <span class="value">742 </span><span class="unit">мм рт. ст.</span>
+                </p>
               </div>
             </div>
-
-            <div class="forecast-hour">
-              <div class="card fog">
-                <div class="card-title">15:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-              <div class="card fog">
-                <div class="card-title">16:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-              <div class="card fog">
-                <div class="card-title">17:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-              <div class="card fog">
-                <div class="card-title">18:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-              <div class="card storm">
-                <div class="card-title">19:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-              <div class="card storm">
-                <div class="card-title">20:00</div>
-                <div class="card-info">
-                  <p class="max">10°C</p>
-                </div>
-              </div>
-            </div>
-
-            <button class="arrow-button arrow-right"></button>
           </div>
         </div>
-        <div class="details-for-today"></div>
-      </div>
+      </section>
     </main>
     <script src="src/js/sidebar.js"></script>
     <script src="src/js/switcher.js"></script>
