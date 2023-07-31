@@ -1,0 +1,13 @@
+:root {
+  --background-light: #fff;
+  --background-dark: #e5e5e5;
+
+  --text-main: #48484a;
+  --text-secondary: #acacac;
+  --text-small: #acacac;
+
+  --switcher-border: #acacac;
+  --switcher-moon: #48484a;
+
+  --font-face: 'Rubik', sans-serif;
+}

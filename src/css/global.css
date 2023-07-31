@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap');
+@import url('./additional-info.css');
+@import url('./main-info.css');
+@import url('./normalize.css');
 
 *,
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Rubik', sans-serif;
+  font-family: var(--font-face);
   font-size: 18px;
   line-height: 1.4;
-  color: #48484a;
+  color: var(--text-main);
   box-sizing: border-box;
 }
 
 .content {
   display: flex;
-  overflow: hidden;
 }
 
 @media (max-width: 833px) {

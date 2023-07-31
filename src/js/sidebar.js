@@ -1,5 +1,5 @@
-const openSidebarButton = document.getElementById('open-sidebar');
-const closeSidebarButton = document.getElementById('close-sidebar');
+const openSidebarButton = document.getElementById('main-info__open-sidebar');
+const closeSidebarButton = document.getElementById('sidebar__close-sidebar');
 const sidebar = document.querySelector('.sidebar');
 
 openSidebarButton.addEventListener('click', () => {
