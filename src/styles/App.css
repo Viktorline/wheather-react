@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap');
-@import url('./additional-info.css');
-@import url('./main-info.css');
 @import url('./normalize.css');
+@import './themes/light-theme.css';
+@import './themes/dark-theme.css';
 
 *,
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-face);
+  font-family: 'Rubik', sans-serif;
   font-size: 18px;
   line-height: 1.4;
   color: var(--text-main);
@@ -17,6 +17,7 @@ body {
 
 .content {
   display: flex;
+  min-height: 100vh;
 }
 
 @media (max-width: 833px) {

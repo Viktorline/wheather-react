@@ -1,4 +1,4 @@
-:root {
+.dark-theme {
   --background-light: #212331;
   --background-dark: #100e1c;
 
@@ -8,6 +8,4 @@
 
   --switcher-border: #acacac;
   --switcher-moon: #ec6e4d;
-
-  --font-face: 'Rubik', sans-serif;
 }

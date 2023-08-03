@@ -4,10 +4,11 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  min-height: 720px;
   width: 460px;
-  padding: 42px 41px 35px;
+  padding: 42px 41px 40px;
   background-color: var(--background-light);
-  background-image: url(../img/cloud-background.png);
+  background-image: url(../../img/cloud-background.png);
   background-blend-mode: difference;
   background-repeat: no-repeat;
   background-position: center top 110px;
@@ -20,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 
 #main-info__open-sidebar {
@@ -60,7 +61,7 @@
   display: block;
   width: 20px;
   height: 20px;
-  background: var(--switcher-moon) url('../img/moon-light.svg') no-repeat center;
+  background: var(--switcher-moon) url('../../img/moon-light.svg') no-repeat center;
   border-radius: 50%;
   position: absolute;
   left: 3px;
@@ -70,14 +71,14 @@
 
 #main-info__switch-theme.active::before {
   left: calc(100% - 26px);
-  background: var(--switcher-moon) url('../img/moon-dark.svg') no-repeat center;
+  background: var(--switcher-moon) url('../../img/moon-dark.svg') no-repeat center;
 }
 
 /* Big-info (temperature, weather, feelslike)*/
 .main-info__center-img {
-  flex-grow: 1;
-  width: 200px;
-  margin-bottom: -10px;
+  width: 100px;
+  flex: 1;
+  background: url('../../img/snowflake.svg') no-repeat center;
 }
 
 .main-info__big-info {
@@ -121,7 +122,7 @@
   padding-left: 5px;
   font-size: 18px;
   color: var(--text-secondary);
-  margin-bottom: 10px;
+  margin-top: auto;
 }
 
 .main-info__date-inner {
@@ -160,103 +161,9 @@
   right: 76px;
   top: 45%;
   transform: translateY(-50%);
-  background-image: url(../img/location-mark.svg);
+  background-image: url(../../img/location-mark.svg);
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-/* Sidebar-search */
-.sidebar {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -100%;
-  min-height: 720px;
-  height: 100%;
-  width: 100%;
-  padding: 31px 45px;
-  background-color: var(--background-light);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: left 0.5s ease-in-out;
-}
-
-.sidebar-active {
-  left: 0;
-}
-
-.sidebar__button-close {
-  align-self: flex-end;
-  margin-bottom: 33px;
-}
-
-#sidebar__close-sidebar {
-  font-size: 47px;
-  margin-right: -8px;
-  padding: 0;
-  border: 0;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-#sidebar__search-city {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  position: relative;
-}
-
-#sidebar__input {
-  width: 250px;
-  height: 50px;
-  font-size: 18px;
-  padding-left: 45px;
-  box-sizing: border-box;
-  color: var(--text-main);
-  border: 2px solid var(--text-secondary);
-  border-radius: 10px;
-  background-color: transparent;
-  flex-shrink: initial;
-}
-
-#sidebar__search-city::before {
-  content: '';
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  left: 19px;
-  top: 34%;
-  background-image: url(../img/lens.svg);
-  background-repeat: no-repeat;
-}
-
-#sidebar__find-city {
-  width: 97px;
-  height: 50px;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-  color: var(--text-main);
-  border: 2px solid var(--text-secondary);
-  border-radius: 10px;
-  background-color: transparent;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#sidebar__find-city:hover {
-  background-color: var(--text-secondary);
-  color: var(--background-light);
-}
-
-.button-block {
-  display: flex;
-  width: 100%;
-}
-
-label[for='sidebar__input'] {
-  display: none;
 }
 
 /* Media for adaptive */
@@ -264,24 +171,27 @@ label[for='sidebar__input'] {
 /* i-pad */
 
 @media (min-width: 834px) and (max-width: 1439px) {
-  /* Main-info */
   .main-info {
     position: fixed;
-    min-width: 329px;
-    width: 329px;
+    min-height: 100vh;
+    width: 330px;
     padding: 53px 20px 35px 21px;
     background-position: center top 308px;
     background-size: 107%;
-    overflow: auto;
+    overflow-y: auto;
   }
 
   #main-info__switch-theme {
     margin-right: -7px;
   }
 
+  .main-info__center-img {
+    min-height: 182px;
+  }
+
   .main-info__button-block {
     padding: 0px 7px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .main-info__big-info {
@@ -313,66 +223,49 @@ label[for='sidebar__input'] {
     right: 77px;
     top: 50%;
   }
-
-  /* Sidebar */
-
-  .sidebar {
-    padding: 44px 27px;
-    min-height: 720px;
-    height: 100%;
-  }
-
-  #sidebar__search-city {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sidebar__button-close {
-    margin-bottom: 24px;
-  }
-
-  #sidebar__input {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  #sidebar__search-city::before {
-    top: 14%;
-  }
 }
 
 /* i-phone */
 
 @media (max-width: 833px) {
   .main-info {
+    min-height: 668px;
     height: 667px;
     width: 100%;
     padding: 31px 30px 44px;
-    background-image: url(../img/cloud-background-phone.png);
+    background-image: url(../../img/cloud-background-phone.png);
     background-position: center top 67px;
     background-size: 100%;
   }
 
   .main-info__button-block {
-    margin-bottom: 9px;
+    margin-bottom: 60px;
+  }
+
+  .main-info__center-img {
+    flex: none;
+    height: 100px;
+    margin-bottom: 12px;
   }
 
   #main-info__switch-theme {
     margin-right: 0px;
   }
 
-  .main-info__center-img {
-    margin-bottom: -37px;
+  .main-info__big-info {
+    margin: 0;
+    margin-bottom: 75px;
   }
 
   .main-info__small-info {
-    margin-bottom: 7px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .main-info__date-inner {
     justify-content: space-between;
-    margin-left: 19px;
-    width: 285px;
+    margin-left: 15px;
+    width: 282px;
   }
 
   .main-info__small-date {
@@ -390,41 +283,5 @@ label[for='sidebar__input'] {
   .main-info__city::before {
     right: 76px;
     top: 45%;
-  }
-
-  /* Sidebar */
-
-  .sidebar {
-    padding: 25px 50px 0 27px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 667px;
-    min-height: 0;
-    max-height: 667px;
-  }
-
-  #sidebar__search-city {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 298px;
-  }
-
-  .sidebar__button-close {
-    margin-bottom: 24px;
-  }
-
-  #sidebar__input {
-    width: 298px;
-    margin-bottom: 20px;
-  }
-
-  #sidebar__search-city::before {
-    top: 14%;
-  }
-
-  #sidebar__find-city {
-    margin-left: 22px;
   }
 }

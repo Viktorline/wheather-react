@@ -1,6 +1,7 @@
 .additional-info {
+  min-height: 720px;
   width: 100%;
-  padding: 37px 120px 43px 138px;
+  padding: 34px 120px 40px 138px;
   background-color: var(--background-dark);
   display: flex;
   justify-content: center;
@@ -131,19 +132,19 @@
 
 .forecast-week__card--fog,
 .forecast-hour__card--fog {
-  background-image: url(../img/weather-states/fog.png);
+  background-image: url(../../img/weather-states/fog.png);
 }
 
 .forecast-week__card--rain,
 .forecast-hour__card--rain {
   background-repeat: no-repeat;
-  background-image: url(../img/weather-states/rain.png);
+  background-image: url(../../img/weather-states/rain.png);
 }
 
 .forecast-week__card--storm,
 .forecast-hour__card--storm {
   background-repeat: no-repeat;
-  background-image: url(../img/weather-states/storm.png);
+  background-image: url(../../img/weather-states/storm.png);
 }
 
 /* Buttons and arrows*/
@@ -168,14 +169,14 @@
   opacity: 0.4;
   left: -71px;
   background-color: var(--background-light);
-  background-image: url(../img/arrow-right.svg);
+  background-image: url(../../img/arrow-right.svg);
   transform: scaleX(-1);
 }
 
 .cards-container__arrow-right {
   right: -71px;
   background-color: var(--background-light);
-  background-image: url(../img/arrow-right.svg);
+  background-image: url(../../img/arrow-right.svg);
 }
 
 .forecast-switcher__arrow-button:hover {
@@ -262,7 +263,7 @@
 }
 
 .detail__wind-direction > .wind-direction__img {
-  background-image: url(../img/wind-direction.svg);
+  background-image: url(../../img/wind-direction.svg);
   width: 38px;
   height: 38px;
   margin-left: 3px;
@@ -286,8 +287,9 @@
 
 @media (min-width: 834px) and (max-width: 1439px) {
   .additional-info {
+    min-height: 1198px;
     margin-left: 329px; /* для main-info position: fixed */
-    padding: 57px 0 55px 10px;
+    padding: 55px 0 55px 10px;
     overflow: auto;
   }
 
@@ -359,6 +361,10 @@
     margin-bottom: 25px;
   }
 
+  .bolder::after {
+    top: 27px;
+  }
+
   .forecast-switcher > .forecast-switcher__inner {
     display: flex;
     flex-direction: column;
@@ -393,7 +399,7 @@
   }
 
   .details-for-today__title {
-    margin: 0 0 11px 7px;
+    margin: 0 0 11px 1px;
     text-align: center;
   }
 
