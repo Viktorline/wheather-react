@@ -6,7 +6,7 @@
   height: 100vh;
   min-height: 720px;
   width: 460px;
-  padding: 42px 41px 40px;
+  padding: 42px 41px 31px;
   background-color: var(--background-light);
   background-image: url(../../img/cloud-background.png);
   background-blend-mode: difference;
@@ -128,13 +128,13 @@
 .main-info__date-inner {
   display: flex;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .main-info__small-date {
   color: var(--text-secondary);
   width: 100px;
-  margin: 0 43px;
+  margin: 0 40px;
 }
 
 .main-info__small-date:first-child {
@@ -143,27 +143,45 @@
 
 .main-info__location {
   display: flex;
+  width: 100%;
   justify-content: center;
-  padding-left: 8px;
+  align-items: center;
+
+  padding-right: 40px;
   position: relative;
   color: var(--text-secondary);
+  /* border: 1px solid black; */
 }
 
 .main-info__location-city {
   color: var(--text-secondary);
+  padding-bottom: 8px;
+  padding-right: 2px;
 }
 
-.main-info__location-city::before {
-  content: '';
-  position: absolute;
+.main-info__location-svg {
+  padding-right: 52px;
   width: 40px;
   height: 40px;
-  right: 76px;
-  top: 45%;
-  transform: translateY(-50%);
   background-image: url(../../img/location-mark.svg);
   background-size: contain;
   background-repeat: no-repeat;
+  margin-top: -15px;
+}
+
+.loading-overlay-main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  background-color: var(--background-light);
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Media for adaptive */
@@ -199,7 +217,7 @@
   }
 
   .main-info__small-info {
-    margin-bottom: 7px;
+    margin-bottom: -3px;
   }
 
   .main-info__date-inner {
@@ -214,22 +232,13 @@
   .main-info__small-date:first-child {
     margin-left: 5px;
   }
-
-  .main-info__location {
-    padding-left: 13px;
-  }
-
-  .main-info__city::before {
-    right: 77px;
-    top: 50%;
-  }
 }
 
 /* i-phone */
 
 @media (max-width: 833px) {
   .main-info {
-    min-height: 668px;
+    min-height: 666px;
     height: 667px;
     width: 100%;
     padding: 31px 30px 44px;
@@ -240,6 +249,7 @@
 
   .main-info__button-block {
     margin-bottom: 60px;
+    width: 315px;
   }
 
   .main-info__center-img {
@@ -274,14 +284,5 @@
 
   .main-info__small-date:first-child {
     margin-left: 2px;
-  }
-
-  .main-info__location {
-    padding-left: 10px;
-  }
-
-  .main-info__city::before {
-    right: 76px;
-    top: 45%;
   }
 }

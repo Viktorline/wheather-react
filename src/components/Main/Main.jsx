@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import ThemeContext from '../../context/ThemeContext';
+import { WeatherContext } from '../../context/WeatherContext';
 
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -8,11 +9,22 @@ import './Main.css';
 const Main = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
   const { darkTheme, toggleTheme } = useContext(ThemeContext);
+  const { city, isLoading, historyOnLoad } = useContext(WeatherContext);
 
   const themeButtonClass = darkTheme ? 'active' : '';
 
   return (
     <section className='main-info'>
+      {(isLoading || historyOnLoad) && (
+        <div className='loading-overlay-main'>
+          <div className='lds-ellipsis'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
       <div className='main-info__button-block'>
         <button id='main-info__open-sidebar' onClick={() => setSidebarActive(true)}>
           Поиск города
@@ -36,9 +48,10 @@ const Main = () => {
           <p className='main-info__small-date'>Сегодня</p>
           <p className='main-info__small-date'>Вс, 13 мар</p>
         </div>
-        <p className='main-info__location'>
-          <span className='main-info__location-city'>Москва</span>
-        </p>
+        <div className='main-info__location'>
+          <div className='main-info__location-svg'></div>
+          <span className='main-info__location-city'>{city}</span>
+        </div>
       </div>
       <Sidebar active={sidebarActive} closeSidebar={() => setSidebarActive(false)} />
     </section>
