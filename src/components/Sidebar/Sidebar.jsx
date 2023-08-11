@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
-import searchCity from '../../utils/searchCity.js';
-import getWeather from '../../utils/getWeather.js';
+import getCity from '../../utils/API/getCity';
+import getWeather from '../../utils/API/getWeather.js';
+
+import ErrorContext from '../../context/ErrorContext.js';
 import { WeatherContext } from '../../context/WeatherContext.js';
+import checkCityInHistory from '../../utils/checkCityInHistory.js';
 
 import './Sidebar.css';
 
 const Sidebar = ({ active, closeSidebar }) => {
   const {
+    setWeather,
+    setForecast,
     setIsLoading,
     isLoading,
     isLoadingHistory,
@@ -15,10 +20,13 @@ const Sidebar = ({ active, closeSidebar }) => {
     setHistoryOnLoad,
   } = useContext(WeatherContext);
 
+  const { setError } = useContext(ErrorContext);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [selectedCityIndex, setSelectedCityIndex] = useState(null);
   const [searchError, setSearchError] = useState(null);
+  const [isActionInProgress, setIsActionInProgress] = useState(false);
 
   useEffect(() => {
     const history = localStorage.getItem('searchHistory');
@@ -32,6 +40,10 @@ const Sidebar = ({ active, closeSidebar }) => {
     }
   }, []);
 
+  const handleError = (message) => {
+    setError(message);
+  };
+
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -43,20 +55,27 @@ const Sidebar = ({ active, closeSidebar }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsActionInProgress(true);
+
     if (!searchQuery.trim()) {
       setSearchError('Поле поиска не может быть пустым');
       setTimeout(() => {
         setSearchError(null);
       }, 3000);
       setSearchQuery('');
+      setIsActionInProgress(false);
       return;
     }
 
     setIsLoading(true);
 
     try {
-      const locationData = await searchCity(searchQuery); // Поиск города
-      await getWeather(locationData.lat, locationData.lon); // Поиск прогноза по координатам
+      const locationData = await getCity(searchQuery, handleError);
+      checkCityInHistory(locationData.location);
+      const dataWeather = await getWeather(locationData.lat, locationData.lon);
+      const forecast = dataWeather.list;
+      setWeather(forecast[0]);
+      setForecast(forecast);
       const newHistory = [locationData.location, ...searchHistory].slice(0, 5);
       updateCity(locationData);
       setSearchHistory(newHistory);
@@ -67,22 +86,29 @@ const Sidebar = ({ active, closeSidebar }) => {
       closeSidebar();
     } catch (error) {
       setSearchError(error.message);
+      setSearchQuery('');
+
       setTimeout(() => {
         setSearchError(null);
       }, 3000);
     }
 
     setIsLoading(false);
+    setIsActionInProgress(false);
   };
 
   const handleClickHistoryItem = async (location, index) => {
+    setIsActionInProgress(true);
     setHistoryOnLoad(true);
     setIsLoadingHistory({ ...isLoadingHistory, [index]: true });
 
     try {
       setSelectedCityIndex(index);
-      const locationData = await searchCity(location);
-      await getWeather(locationData.lat, locationData.lon);
+      const locationData = await getCity(location, handleError);
+      const dataWeather = await getWeather(locationData.lat, locationData.lon);
+      const forecast = dataWeather.list;
+      setWeather(forecast[0]);
+      setForecast(forecast);
       updateCity(locationData);
       localStorage.setItem('selectedCityIndex', index.toString());
       closeSidebar();
@@ -95,6 +121,7 @@ const Sidebar = ({ active, closeSidebar }) => {
 
     setIsLoadingHistory({ ...isLoadingHistory, [index]: false });
     setHistoryOnLoad(false);
+    setIsActionInProgress(false);
   };
 
   return (
@@ -119,7 +146,7 @@ const Sidebar = ({ active, closeSidebar }) => {
           pattern='^[?!,.\-а-яА-ЯёЁ\s]+$'
           title='Пожалуйста, используйте только кириллицу'
         />
-        <button type='submit' id='sidebar__find-city' disabled={!searchQuery}>
+        <button type='submit' id='sidebar__find-city' disabled={!searchQuery || isActionInProgress}>
           Найти
         </button>
       </form>
@@ -130,7 +157,11 @@ const Sidebar = ({ active, closeSidebar }) => {
               index === selectedCityIndex ? ' city-choosen' : ''
             }`}
             key={index}
-            onClick={() => handleClickHistoryItem(city, index)}
+            onClick={() => {
+              if (!isActionInProgress) {
+                handleClickHistoryItem(city, index);
+              }
+            }}
           >
             <span className='container__city'>{city}</span>
             <div

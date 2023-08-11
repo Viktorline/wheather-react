@@ -1,3 +1,5 @@
+import './Switcher.css';
+
 const Switcher = ({ isHourly, setIsHourly }) => (
   <div className='forecast-switcher__inner'>
     <h3 className='forecast-switcher__title'>Прогноз</h3>

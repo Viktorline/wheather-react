@@ -15,7 +15,6 @@
   transition: background-color 0.5s, color 0.5s;
 }
 
-/* Button open-sidebar */
 .main-info__button-block {
   display: flex;
   align-items: center;
@@ -41,8 +40,6 @@
   background-color: var(--text-secondary);
   color: var(--background-light);
 }
-
-/* Button switch-theme */
 
 #main-info__switch-theme {
   width: 64px;
@@ -74,11 +71,11 @@
   background: var(--switcher-moon) url('../../img/moon-dark.svg') no-repeat center;
 }
 
-/* Big-info (temperature, weather, feelslike)*/
 .main-info__center-img {
-  width: 100px;
+  width: 200px;
   flex: 1;
   background: url('../../img/snowflake.svg') no-repeat center;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .main-info__big-info {
@@ -88,7 +85,6 @@
   margin-bottom: 75px;
 }
 
-/* Temperature */
 .main-info__temperature {
   font-size: 50px;
   font-weight: 500;
@@ -100,7 +96,6 @@
   font-weight: 900;
 }
 
-/* Weather and feelslike */
 .main-info__weather {
   font-size: 36px;
   font-weight: bold;
@@ -112,7 +107,6 @@
   color: var(--text-secondary);
 }
 
-/* Small-info (Date and location) */
 .main-info__small-info {
   display: flex;
   flex-direction: column;
@@ -150,13 +144,13 @@
   padding-right: 40px;
   position: relative;
   color: var(--text-secondary);
-  /* border: 1px solid black; */
 }
 
 .main-info__location-city {
   color: var(--text-secondary);
   padding-bottom: 8px;
   padding-right: 2px;
+  text-align: center;
 }
 
 .main-info__location-svg {
@@ -168,25 +162,6 @@
   background-repeat: no-repeat;
   margin-top: -15px;
 }
-
-.loading-overlay-main {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 0px;
-  background-color: var(--background-light);
-  opacity: 0.8;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Media for adaptive */
-
-/* i-pad */
 
 @media (min-width: 834px) and (max-width: 1439px) {
   .main-info {
@@ -233,8 +208,6 @@
     margin-left: 5px;
   }
 }
-
-/* i-phone */
 
 @media (max-width: 833px) {
   .main-info {

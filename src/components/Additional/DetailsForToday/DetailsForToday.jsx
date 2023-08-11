@@ -1,17 +1,15 @@
 import React, { useContext } from 'react';
 import { WeatherContext } from '../../../context/WeatherContext';
+import windDirection from '../../../utils/windDirection';
+import './DetailsForToday.css';
+import convertPressure from '../../../utils/convertPressure';
 
-import Detail from './Detail';
+import Detail from './Detail/Detail';
 
 const DetailsForToday = () => {
   const { weather } = useContext(WeatherContext);
 
-  const convertPressure = (pressureInHPa) => {
-    return Math.floor(pressureInHPa * 0.750062);
-  };
-
   if (!weather) {
-    //рендер белых карточек если погода еще не загружена
     return (
       <div className='details-for-today'>
         <h3 className='details-for-today__title'>Подробно на сегодня</h3>
@@ -25,17 +23,23 @@ const DetailsForToday = () => {
     );
   }
 
+  const { direction, rotation } = windDirection(weather.wind.deg);
+
+  const arrowRotationStyle = {
+    transform: `rotate(${rotation}deg)`,
+  };
+
   return (
-    //рендер карточек если погода есть и внутри рендер прозрачной анимации
     <div className='details-for-today'>
       <h3 className='details-for-today__title'>Подробно на сегодня</h3>
       <div className='details-for-today__details-container'>
         <Detail
           title='Скорость ветра'
-          value={weather.wind.speed}
+          value={Math.round(weather.wind.speed)}
           unit='м/с'
           additionalClass='detail-wind'
-          windDirection='СЗ'
+          windDirection={direction}
+          windDirectionStyle={arrowRotationStyle}
         />
         <Detail
           title='Влажность'

@@ -4,15 +4,16 @@ import App from './App';
 
 import { ThemeProvider } from './context/ThemeContext';
 import { WeatherProvider } from './context/WeatherContext';
+import { ErrorProvider } from './context/ErrorContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <WeatherProvider>
-      <ThemeProvider>
+  <WeatherProvider>
+    <ThemeProvider>
+      <ErrorProvider>
         <App />
-      </ThemeProvider>
-    </WeatherProvider>
-  </React.StrictMode>
+      </ErrorProvider>
+    </ThemeProvider>
+  </WeatherProvider>
 );

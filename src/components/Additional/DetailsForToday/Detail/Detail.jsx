@@ -1,21 +1,16 @@
 import React, { useContext } from 'react';
-import { WeatherContext } from '../../../context/WeatherContext';
+import { WeatherContext } from '../../../../context/WeatherContext';
 
-const Detail = ({ title, value, unit, additionalClass, windDirection }) => {
+import LoadingOverlay from '../../../LoadingOverlay/LoadingOverlay';
+
+import './Detail.css';
+
+const Detail = ({ title, value, unit, additionalClass, windDirection, windDirectionStyle }) => {
   const { isLoading, historyOnLoad } = useContext(WeatherContext);
 
   return (
     <article className={`detail ${additionalClass}`}>
-      {(isLoading || historyOnLoad) && (
-        <div className='loading-overlay'>
-          <div className='lds-ellipsis'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      )}
+      {(isLoading || historyOnLoad) && <LoadingOverlay />}
       <h5 className='detail__title'>{title}</h5>
       <p className='detail__info'>
         <span className='info__value'>{value} </span>
@@ -23,8 +18,8 @@ const Detail = ({ title, value, unit, additionalClass, windDirection }) => {
       </p>
       {windDirection && (
         <div className='detail__wind-direction'>
-          <div className='wind-direction__img'></div>
-          <span className='wind-direction__direction'>{windDirection}</span>
+          <div className='wind-direction__img' style={windDirectionStyle}></div>
+          <span>{windDirection}</span>
         </div>
       )}
       {title === 'Влажность' && (
